@@ -1,0 +1,81 @@
+There are two python programs:
+
+  - bloom_model.py - python model of Bloom pattern search algorithm.
+
+  - util_for_sim.py - program for making a settings file for
+                      simulation.
+
+Description of programs:
+
+ bloom_model.py 
+  
+   The keys:
+
+     ATTANTION: All keys mast be set!
+
+     -s <FILE_NAME> - File with strings for search (e.c. example_strings).
+
+     -d <FILE_NAME> - File, in which search will be done.
+
+     -o <FILE_NAME> - Output file name (if not set - "filtered_data").
+             
+     -h             - help.
+
+   How to work with it:
+
+     1) Make you own file with strings (use "example_strings" as the
+     example)
+
+     2) Make you own file with data, where you want to search.
+
+     3) Run:
+
+          python bloom_model.py -s example_strings -d example_data -o example_filt_data
+
+     4) In the end you will see, true result and result of Bloom
+        filter.
+
+     5) Also output file will appear with strings without patterns.
+
+
+
+ util_for_sim.py
+
+   The keys:
+
+     ATTANTION:  1) You can set only one key at a time.
+                 2) You can change .json file name and file for
+                 simulation with strings. Open util_for_sim.py and
+                 change values of SIM_FNAME and PM_STATE_FNAME.
+
+     -i             - Initialasing of module, always start with this
+                      command.
+                      
+                         util_for_sim.py -i
+
+     -a <STRING>    - Add 1 string <STRING> as a pattern for search.
+
+     -A <FILE_NAME> - Add all strings from file <FILE_NAME> as a
+                      patterns for search.
+
+     -r <STRING>    - Remove <STRING> from list of patterns for search.
+
+     -S             - Show info.
+  
+   How to work with it:
+   
+     1) Initialasing module:
+
+          python util_for_sim.py -i
+
+     2) Add 1 string:
+ 
+          python util_for_sim.py -a google
+
+        Or list of strings:
+
+          python util_for_sim.py -A example_strings
+
+     3) In the end you will have example_settings file with settings
+        for simulation. Copy this file in ../testbench/
+

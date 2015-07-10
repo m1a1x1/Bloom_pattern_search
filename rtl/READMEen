@@ -1,0 +1,87 @@
+In this folder there are all parts of bloom filter.
+Main file is top_bloom.sv
+
+All modules are in SystemVerilog.
+
+You can change parameters in top_bloom.sv
+
+Modules:
+
+  bloom_rx
+
+    Input:
+
+      - data_i     [7:0]  - Data for search. 1 byte per clock cycle.
+
+      - data_eop_i        - Strobe, show the end of string for search.
+
+      - data_val_i        - Data valid signal. Can not fall without
+                            eop strobe. 
+
+   How it works:
+     
+      Module make a queue with input data with the length of MAX_S.
+
+   Output:
+
+      - data_o     [MAX_S-1:0][7:0]  - Queue of input data.
+
+      - data_eop_o                   - Delayed eop.
+
+      - data_val_o [MAX_S-1:0]       - Data valid signal.
+
+  crc32_hash 
+
+    Input:
+
+      - symbs_data_i     [MAX_S-1:0][7:0]  - Data for calculating hash.
+     
+      - symbs_data_val_i [MAX_S-1:0]       - Data valid signal.
+
+    How it works:
+
+      Module calculate 10 hash-functions from BF_N simbols:
+
+        - Calculate 4 crc32 with different polynoms.
+
+        - Combain results and seporate it in 10 hashes each 12-bit width.
+          
+    Output:
+
+      - hash_o [HASH_CNT-1:0][HASH_WIDTH-1:0]  - 10 hash-functions
+                                                 12-bit width.
+                                                 
+      - hash_val_o                             - Data valid signal.
+
+  bloommem
+
+    Input:
+
+      - hash_i [HASH_CNT-1:0][HASH_WIDTH-1:0]  - Hash-function results
+                                                 (used as an addres
+                                                 for memory)
+
+      - hash_val_i                             - Data valid signal.
+
+      - bsi                                    - Intrface for writing
+                                                 new strings in
+                                                 memory.
+
+    How it works:
+
+      If there are logic 1 in memory with addres hash_i - this strings
+      might be written. If in all 10 adresses there are logic 1 -
+      we cosider that exactly wthis string was written.
+
+      Module is ready to write new string while searching (it will be
+      written right after search done).
+
+      Module does not count strings written. Python module have to do
+      it for it.
+
+    Output:
+
+      - match_o     - Search result.
+
+      - long_clr_o  - Statuse of full memory cleaning.
+

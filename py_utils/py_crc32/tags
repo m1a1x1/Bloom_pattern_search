@@ -1,0 +1,183 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+Action_Check_File	./crc_opt.py	/^    Action_Check_File       = 0x03$/;"	v	class:Options
+Action_Check_Hex_String	./crc_opt.py	/^    Action_Check_Hex_String = 0x02$/;"	v	class:Options
+Action_Check_String	./crc_opt.py	/^    Action_Check_String     = 0x01$/;"	v	class:Options
+Action_Generate_C	./crc_opt.py	/^    Action_Generate_C       = 0x05$/;"	v	class:Options
+Action_Generate_C_Main	./crc_opt.py	/^    Action_Generate_C_Main  = 0x06$/;"	v	class:Options
+Action_Generate_H	./crc_opt.py	/^    Action_Generate_H       = 0x04$/;"	v	class:Options
+Action_Generate_Table	./crc_opt.py	/^    Action_Generate_Table   = 0x07$/;"	v	class:Options
+Algo_Bit_by_Bit	./crc_opt.py	/^    Algo_Bit_by_Bit         = 0x01$/;"	v	class:Options
+Algo_Bit_by_Bit_Fast	./crc_opt.py	/^    Algo_Bit_by_Bit_Fast    = 0x02$/;"	v	class:Options
+Algo_Bitwise_Expression	./crc_opt.py	/^    Algo_Bitwise_Expression = 0x04$/;"	v	class:Options
+Algo_None	./crc_opt.py	/^    Algo_None               = 0x00$/;"	v	class:Options
+Algo_Table_Driven	./crc_opt.py	/^    Algo_Table_Driven       = 0x08$/;"	v	class:Options
+Crc	./crc_algorithms.py	/^class Crc(object):$/;"	c
+CrcModels	./crc_models.py	/^class CrcModels(object):$/;"	c
+CrcTests	./test/test.py	/^class CrcTests(object):$/;"	c
+HTML_STYLESHEET	./doc/Makefile	/^HTML_STYLESHEET	= \/usr\/share\/xml\/docbook\/stylesheet\/nwalsh\/html\/docbook.xsl$/;"	m
+Lexer	./crc_lexer.py	/^class Lexer(object):$/;"	c
+MAN_STYLESHEET	./doc/Makefile	/^MAN_STYLESHEET	= \/usr\/share\/xml\/docbook\/stylesheet\/nwalsh\/manpages\/docbook.xsl$/;"	m
+MacroParser	./crc_parser.py	/^class MacroParser(object):$/;"	c
+MyOption	./crc_opt.py	/^class MyOption(Option):$/;"	c
+Options	./crc_opt.py	/^class Options(object):$/;"	c
+Options	./test/test.py	/^class Options(object):$/;"	c
+ParseError	./crc_parser.py	/^class ParseError(Exception):$/;"	c
+ProgramName	./crc_opt.py	/^    ProgramName    = "pycrc"$/;"	v	class:Options
+QuineMcCluskey	./qm.py	/^class QuineMcCluskey:$/;"	c
+SymbolLookupError	./crc_symtable.py	/^class SymbolLookupError(Exception):$/;"	c
+SymbolTable	./crc_symtable.py	/^class SymbolTable:$/;"	c
+TYPES	./crc_opt.py	/^    TYPES = Option.TYPES + ("hex", "bool")$/;"	v	class:MyOption
+TYPE_CHECKER	./crc_opt.py	/^    TYPE_CHECKER = copy(Option.TYPE_CHECKER)$/;"	v	class:MyOption
+Version	./crc_opt.py	/^    Version        = "0.8.1"$/;"	v	class:Options
+VersionStr	./crc_opt.py	/^    VersionStr     = "%s v%s" % (ProgramName, Version)$/;"	v	class:Options
+WebAddress	./crc_opt.py	/^    WebAddress     = "http:\/\/www.tty1.net\/pycrc\/"$/;"	v	class:Options
+XSLTPARAM	./doc/Makefile	/^XSLTPARAM		= --nonet --novalid$/;"	m
+XSLTPROC	./doc/Makefile	/^XSLTPROC		= xsltproc$/;"	m
+__check_bin	./test/test.py	/^    def __check_bin(self, args, expected_result):$/;"	m	class:CrcTests	file:
+__check_command	./test/test.py	/^    def __check_command(self, cmd_str, expected_result):$/;"	m	class:CrcTests	file:
+__compile	./test/test.py	/^    def __compile(self, args, binfile, cstd):$/;"	m	class:CrcTests	file:
+__del__	./test/test.py	/^    def __del__(self):$/;"	m	class:CrcTests	file:
+__del_files	./test/test.py	/^    def __del_files(delf, files):$/;"	m	class:CrcTests	file:
+__format_bwe_expression	./crc_symtable.py	/^    def __format_bwe_expression(self, minterms):$/;"	m	class:SymbolTable	file:
+__getTerminal	./crc_symtable.py	/^    def __getTerminal(self, id):$/;"	m	class:SymbolTable	file:
+__get_crc	./test/test.py	/^    def __get_crc(self, model, check_str = "123456789", expected_crc = None):$/;"	m	class:CrcTests	file:
+__get_crc_bwe_bitmask_minterms	./crc_symtable.py	/^    def __get_crc_bwe_bitmask_minterms(self):$/;"	m	class:SymbolTable	file:
+__get_crc_bwe_expression	./crc_symtable.py	/^    def __get_crc_bwe_expression(self):$/;"	m	class:SymbolTable	file:
+__get_essential_implicants	./qm.py	/^    def __get_essential_implicants(self, terms):$/;"	m	class:QuineMcCluskey	file:
+__get_include_files	./crc_symtable.py	/^    def __get_include_files(self):$/;"	m	class:SymbolTable	file:
+__get_init_value	./crc_symtable.py	/^    def __get_init_value(self):$/;"	m	class:SymbolTable	file:
+__get_nondirect_init	./crc_algorithms.py	/^    def __get_nondirect_init(self, init):$/;"	m	class:Crc	file:
+__get_prime_implicants	./qm.py	/^    def __get_prime_implicants(self, terms):$/;"	m	class:QuineMcCluskey	file:
+__get_table_core_algorithm_ni	./crc_symtable.py	/^    def __get_table_core_algorithm_ni(self):$/;"	m	class:SymbolTable	file:
+__get_table_core_algorithm_ri	./crc_symtable.py	/^    def __get_table_core_algorithm_ri(self):$/;"	m	class:SymbolTable	file:
+__get_table_init	./crc_symtable.py	/^    def __get_table_init(self):$/;"	m	class:SymbolTable	file:
+__get_term_rank	./qm.py	/^    def __get_term_rank(self, term, term_range):$/;"	m	class:QuineMcCluskey	file:
+__get_underlying_crc_t	./crc_symtable.py	/^    def __get_underlying_crc_t(self):$/;"	m	class:SymbolTable	file:
+__init__	./crc_algorithms.py	/^    def __init__(self, width, poly, reflect_in, xor_in, reflect_out, xor_out, table_idx_width = None):$/;"	m	class:Crc
+__init__	./crc_lexer.py	/^    def __init__(self, input_str = ""):$/;"	m	class:Lexer
+__init__	./crc_opt.py	/^    def __init__(self):$/;"	m	class:Options
+__init__	./crc_parser.py	/^    def __init__(self, opt):$/;"	m	class:MacroParser
+__init__	./crc_parser.py	/^    def __init__(self, reason):$/;"	m	class:ParseError
+__init__	./crc_symtable.py	/^    def __init__(self, opt):$/;"	m	class:SymbolTable
+__init__	./crc_symtable.py	/^    def __init__(self, reason):$/;"	m	class:SymbolLookupError
+__init__	./qm.py	/^    def __init__(self, use_xor = False):$/;"	m	class:QuineMcCluskey
+__init__	./test/test.py	/^    def __init__(self):$/;"	m	class:CrcTests
+__init__	./test/test.py	/^    def __init__(self):$/;"	m	class:Options
+__make_bin	./test/test.py	/^    def __make_bin(self, args, basename, cstd="c99"):$/;"	m	class:CrcTests	file:
+__make_src	./test/test.py	/^    def __make_src(self, args, basename, cstd):$/;"	m	class:CrcTests	file:
+__num2str	./qm.py	/^    def __num2str(self, i):$/;"	m	class:QuineMcCluskey	file:
+__pretty_bool	./crc_symtable.py	/^    def __pretty_bool(self, value):$/;"	m	class:SymbolTable	file:
+__pretty_hdrprotection	./crc_symtable.py	/^    def __pretty_hdrprotection(self):$/;"	m	class:SymbolTable	file:
+__pretty_header_filename	./crc_symtable.py	/^    def __pretty_header_filename(self, filename):$/;"	m	class:SymbolTable	file:
+__pretty_hex	./crc_symtable.py	/^    def __pretty_hex(self, value, width = None):$/;"	m	class:SymbolTable	file:
+__pretty_str	./crc_symtable.py	/^    def __pretty_str(self, value):$/;"	m	class:SymbolTable	file:
+__reduce_simple_xnor_terms	./qm.py	/^    def __reduce_simple_xnor_terms(self, t1, t2):$/;"	m	class:QuineMcCluskey	file:
+__reduce_simple_xor_terms	./qm.py	/^    def __reduce_simple_xor_terms(self, t1, t2):$/;"	m	class:QuineMcCluskey	file:
+__run_command	./test/test.py	/^    def __run_command(self, cmd_str):$/;"	m	class:CrcTests	file:
+__setup_files	./test/test.py	/^    def __setup_files(self, opt):$/;"	m	class:CrcTests	file:
+__str__	./crc_parser.py	/^    def __str__(self):$/;"	m	class:ParseError	file:
+__str__	./crc_symtable.py	/^    def __str__(self):$/;"	m	class:SymbolLookupError	file:
+__test_compiled_mixed_args	./test/test.py	/^    def __test_compiled_mixed_args(self):$/;"	m	class:CrcTests	file:
+__test_compiled_models	./test/test.py	/^    def __test_compiled_models(self):$/;"	m	class:CrcTests	file:
+__test_models	./test/test.py	/^    def __test_models(self):$/;"	m	class:CrcTests	file:
+__test_random_params	./test/test.py	/^    def __test_random_params(self):$/;"	m	class:CrcTests	file:
+__test_variable_width	./test/test.py	/^    def __test_variable_width(self):$/;"	m	class:CrcTests	file:
+__version__	./qm.py	/^    __version__ = "0.1"$/;"	v	class:QuineMcCluskey
+_get_num	./crc_parser.py	/^    def _get_num(self, in_str):$/;"	m	class:MacroParser
+_parse_conditional_block	./crc_parser.py	/^    def _parse_conditional_block(self, do_print):$/;"	m	class:MacroParser
+_parse_data	./crc_parser.py	/^    def _parse_data(self, do_print):$/;"	m	class:MacroParser
+_parse_data_block	./crc_parser.py	/^    def _parse_data_block(self, do_print):$/;"	m	class:MacroParser
+_parse_exp_and	./crc_parser.py	/^    def _parse_exp_and(self):$/;"	m	class:MacroParser
+_parse_exp_comparison	./crc_parser.py	/^    def _parse_exp_comparison(self):$/;"	m	class:MacroParser
+_parse_exp_or	./crc_parser.py	/^    def _parse_exp_or(self):$/;"	m	class:MacroParser
+_parse_exp_term	./crc_parser.py	/^    def _parse_exp_term(self):$/;"	m	class:MacroParser
+_parse_expr	./crc_lexer.py	/^    def _parse_expr(self):$/;"	m	class:Lexer
+_parse_gibberish	./crc_lexer.py	/^    def _parse_gibberish(self):$/;"	m	class:Lexer
+_parse_gibberish	./crc_parser.py	/^    def _parse_gibberish(self, do_print):$/;"	m	class:MacroParser
+_parse_identifier	./crc_parser.py	/^    def _parse_identifier(self, do_print):$/;"	m	class:MacroParser
+_parse_if_block	./crc_parser.py	/^    def _parse_if_block(self, do_print):$/;"	m	class:MacroParser
+_parse_next	./crc_lexer.py	/^    def _parse_next(self):$/;"	m	class:Lexer
+advance	./crc_lexer.py	/^    def advance(self, skip_nl = False):$/;"	m	class:Lexer
+atob	./test/main.c	/^bool atob(const char *str)$/;"	f
+bit_by_bit	./crc_algorithms.py	/^    def bit_by_bit(self, in_data):$/;"	m	class:Crc
+bit_by_bit_fast	./crc_algorithms.py	/^    def bit_by_bit_fast(self, in_data):$/;"	m	class:Crc
+check_bool	./crc_opt.py	/^def check_bool(option, opt, value):$/;"	f
+check_file	./pycrc.py	/^def check_file(opt):$/;"	f
+check_hex	./crc_opt.py	/^def check_hex(option, opt, value):$/;"	f
+check_hexstring	./pycrc.py	/^def check_hexstring(opt):$/;"	f
+check_string	./pycrc.py	/^def check_string(opt):$/;"	f
+cleanup	./test/check_files.sh	/^cleanup() {$/;"	f
+cleanup	./test/performance.sh	/^function cleanup {$/;"	f
+crc_file_update	./pycrc.py	/^def crc_file_update(alg, register, check_byte_str):$/;"	f
+crc_reflect	./test/main.c	/^crc_t crc_reflect(crc_t data, size_t data_len)$/;"	f
+crc_verify	./test/main.c	/^crc_t crc_verify(const crc_cfg_t *cfg, crc_t crc_pre_final, crc_t crc)$/;"	f
+delete_spaces	./crc_lexer.py	/^    def delete_spaces(self, skip_unconditional = True):$/;"	m	class:Lexer
+do_check	./test/check_files.sh	/^do_check() {$/;"	f
+gen_table	./crc_algorithms.py	/^    def gen_table(self):$/;"	m	class:Crc
+getList	./crc_models.py	/^    def getList(self):$/;"	m	class:CrcModels
+getParams	./crc_models.py	/^    def getParams(self, model):$/;"	m	class:CrcModels
+getTerminal	./crc_symtable.py	/^    def getTerminal(self, id):$/;"	m	class:SymbolTable
+get_config	./test/main.c	/^int get_config(int argc, char *argv[], crc_cfg_t *cfg)$/;"	f
+idp48161584	./doc/pycrc.html	/^        <\/p><\/div><div class="refsect1" title="Options"><a name="idp48161584"><\/a><h2>Options<\/h2><div class="variablelist"><dl><dt><span class="term">$/;"	a
+idp48257536	./doc/pycrc.html	/^            <\/span><\/dt><dd><p>write the generated code to <em class="replaceable"><code>FILE<\/code><\/em> instead of <code class="filename">stdout<\/code>.<\/p><\/dd><\/dl><\/div><\/div><div class="refsect1" title="The CRC Parametric Model"><a name="idp48257536"><\/a><h2>The CRC Parametric Model<\/h2><p>$/;"	a
+idp48283568	./doc/pycrc.html	/^        <\/p><\/div><div class="refsect1" title="Code generation"><a name="idp48283568"><\/a><h2>Code generation<\/h2><p>$/;"	a
+idp48287760	./doc/pycrc.html	/^        <\/p><div class="refsect2" title="Fully parametrised models"><a name="idp48287760"><\/a><h3>Fully parametrised models<\/h3><p>$/;"	a
+idp48299248	./doc/pycrc.html	/^            <\/p><\/div><div class="refsect2" title="Models with runtime-configurable parameters"><a name="idp48299248"><\/a><h3>Models with runtime-configurable parameters<\/h3><p>$/;"	a
+idp48311584	./doc/pycrc.html	/^            <\/p><\/div><\/div><div class="refsect1" title="Examples"><a name="idp48311584"><\/a><h2>Examples<\/h2><p>$/;"	a
+idp48324352	./doc/pycrc.html	/^        <\/p><\/div><div class="refsect1" title="See Also"><a name="idp48324352"><\/a><h2>See Also<\/h2><p>$/;"	a
+idp48328528	./doc/pycrc.html	/^        <\/p><\/div><div class="refsect1" title="Copyright"><a name="idp48328528"><\/a><h2>Copyright<\/h2><p>$/;"	a
+main	./pycrc.py	/^def main():$/;"	f
+main	./test/main.c	/^int main(int argc, char *argv[])$/;"	f
+main	./test/test.py	/^def main():$/;"	f
+model_cb	./crc_opt.py	/^    def model_cb(self, option, opt_str, value, parser):$/;"	f
+models	./crc_models.py	/^    models = []$/;"	v	class:CrcModels
+parse	./crc_opt.py	/^    def parse(self, argv = None):$/;"	m	class:Options
+parse	./crc_parser.py	/^    def parse(self, in_str):$/;"	m	class:MacroParser
+parse	./test/test.py	/^    def parse(self, argv = None):$/;"	m	class:Options
+peek	./crc_lexer.py	/^    def peek(self):$/;"	m	class:Lexer
+permutations	./qm.py	/^    def permutations(self, value = ''):$/;"	m	class:QuineMcCluskey
+populate	./test/check_files.sh	/^populate() {$/;"	f
+prepend	./crc_lexer.py	/^    def prepend(self, in_str):$/;"	m	class:Lexer
+print_main	./test/performance.sh	/^function print_main {$/;"	f
+print_parameters	./pycrc.py	/^def print_parameters(opt):$/;"	f
+print_routine	./test/performance.sh	/^function print_routine {$/;"	f
+pycrc	./doc/pycrc.html	/^<html><head><meta http-equiv="Content-Type" content="text\/html; charset=ISO-8859-1"><title>pycrc<\/title><meta name="generator" content="DocBook XSL Stylesheets V1.76.1"><\/head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="refentry" title="pycrc"><a name="pycrc"><\/a><div class="titlepage"><\/div><div class="refnamediv"><h2>Name<\/h2><p>pycrc &#8212; a free, easy to use Cyclic Redundancy Check (CRC) calculator and C source code generator.<\/p><\/div><div class="refsynopsisdiv" title="Synopsis"><h2>Synopsis<\/h2><div class="cmdsynopsis"><p><code class="command">python pycrc.py<\/code>  [OPTIONS]<\/p><\/div><\/div><div class="refsect1" title="Description"><a name="idp48142272"><\/a><h2>Description<\/h2><p>$/;"	a
+re_id	./crc_lexer.py	/^    re_id = re.compile("^\\\\$[a-zA-Z][a-zA-Z0-9_-]*")$/;"	v	class:Lexer
+re_is_hex	./crc_parser.py	/^    re_is_hex = re.compile("^0[xX][0-9a-fA-F]+$")$/;"	v	class:MacroParser
+re_is_int	./crc_parser.py	/^    re_is_int = re.compile("^[-+]?[0-9]+$")$/;"	v	class:MacroParser
+re_num	./crc_lexer.py	/^    re_num = re.compile("^(0[xX][0-9a-fA-F]+|[0-9]+)")$/;"	v	class:Lexer
+re_op	./crc_lexer.py	/^    re_op = re.compile("<=|<|==|!=|>=|>")$/;"	v	class:Lexer
+re_str	./crc_lexer.py	/^    re_str = re.compile("\\"?([a-zA-Z0-9_-]+)\\"?")$/;"	v	class:Lexer
+reflect	./crc_algorithms.py	/^    def reflect(self, data, width):$/;"	m	class:Crc
+run	./test/test.py	/^    def run(self, opt):$/;"	m	class:CrcTests
+set_state	./crc_lexer.py	/^    def set_state(self, new_state):$/;"	m	class:Lexer
+set_str	./crc_lexer.py	/^    def set_str(self, input_str):$/;"	m	class:Lexer
+simplify	./qm.py	/^    def simplify(self, ones, dc = []):$/;"	m	class:QuineMcCluskey
+simplify_los	./qm.py	/^    def simplify_los(self, ones, dc = []):$/;"	m	class:QuineMcCluskey
+source	./doc/Makefile	/^source      = pycrc.xml$/;"	m
+state_expr	./crc_lexer.py	/^    state_expr      = 1$/;"	v	class:Lexer
+state_gibberish	./crc_lexer.py	/^    state_gibberish = 0$/;"	v	class:Lexer
+str	./test/main.c	/^static unsigned char str[256] = "123456789";$/;"	v	file:
+table_driven	./crc_algorithms.py	/^    def table_driven(self, in_data):$/;"	m	class:Crc
+targets	./doc/Makefile	/^targets		= $(source:.xml=.html) $(source:.xml=.1)$/;"	m
+tok_EOF	./crc_lexer.py	/^    tok_EOF         = 1$/;"	v	class:Lexer
+tok_and	./crc_lexer.py	/^    tok_and         = 25$/;"	v	class:Lexer
+tok_block_close	./crc_lexer.py	/^    tok_block_close = 13$/;"	v	class:Lexer
+tok_block_open	./crc_lexer.py	/^    tok_block_open  = 12$/;"	v	class:Lexer
+tok_gibberish	./crc_lexer.py	/^    tok_gibberish   = 10$/;"	v	class:Lexer
+tok_identifier	./crc_lexer.py	/^    tok_identifier  = 11$/;"	v	class:Lexer
+tok_num	./crc_lexer.py	/^    tok_num         = 20$/;"	v	class:Lexer
+tok_op	./crc_lexer.py	/^    tok_op          = 24$/;"	v	class:Lexer
+tok_or	./crc_lexer.py	/^    tok_or          = 26$/;"	v	class:Lexer
+tok_par_close	./crc_lexer.py	/^    tok_par_close   = 23$/;"	v	class:Lexer
+tok_par_open	./crc_lexer.py	/^    tok_par_open    = 22$/;"	v	class:Lexer
+tok_str	./crc_lexer.py	/^    tok_str         = 21$/;"	v	class:Lexer
+tok_unknown	./crc_lexer.py	/^    tok_unknown     = 0$/;"	v	class:Lexer
+usage	./test/check_files.sh	/^usage() {$/;"	f
+verbose	./test/main.c	/^static bool verbose = false;$/;"	v	file:
+xtoi	./test/main.c	/^crc_t xtoi(const char *str)$/;"	f

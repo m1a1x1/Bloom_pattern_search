@@ -1,0 +1,90 @@
+BLOOM-FILTER PATTERN SEARCH ON FPGA
+
+This project is an implementation of Bloom filter algorithm for
+pattern search on SystemVerilog.
+
+All work has been made on Linux with the help of next programs: 
+
+  - Python 2.7.8
+
+  - ModelSim SE-64 10.0c
+
+  - Quartus II 64-bit 14.0.0
+
+Here is a fitter summary for Arria II GX EP2AGX125DF25C6:
+
++---------------------------------------------------------------------------------+
+; Fitter Summary                                                                  ;
++-----------------------------------+---------------------------------------------+
+; Fitter Status                     ; Successful - Wed May 27 18:08:54 2015       ;
+; Quartus II 64-Bit Version         ; 14.0.0 Build 200 06/17/2014 SJ Full Version ;
+; Revision Name                     ; top_bloom                                   ;
+; Top-level Entity Name             ; tap_bloom                                   ;
+; Family                            ; Arria II GX                                 ;
+; Device                            ; EP2AGX125DF25C6                             ;
+; Timing Models                     ; Final                                       ;
+; Logic utilization                 ; 12 %                                        ;
+;     Combinational ALUTs           ; 8,391 / 99,280 ( 8 % )                      ;
+;     Memory ALUTs                  ; 0 / 49,640 ( 0 % )                          ;
+;     Dedicated logic registers     ; 8,017 / 99,280 ( 8 % )                      ;
+; Total registers                   ; 8017                                        ;
+; Total pins                        ; 154 / 300 ( 51 % )                          ;
+; Total virtual pins                ; 0                                           ;
+; Total block memory bits           ; 266,240 / 6,727,680 ( 4 % )                 ;
+; DSP block 18-bit elements         ; 0 / 576 ( 0 % )                             ;
+; Total GXB Receiver Channel PCS    ; 0 / 8 ( 0 % )                               ;
+; Total GXB Receiver Channel PMA    ; 0 / 8 ( 0 % )                               ;
+; Total GXB Transmitter Channel PCS ; 0 / 8 ( 0 % )                               ;
+; Total GXB Transmitter Channel PMA ; 0 / 8 ( 0 % )                               ;
+; Total PLLs                        ; 0 / 6 ( 0 % )                               ;
+; Total DLLs                        ; 0 / 2 ( 0 % )                               ;
++-----------------------------------+---------------------------------------------+
+
++---------------------------------------------------------------------------------+
+; Fmax Summary                                                                    ;
++-----------------------------------+---------------------------------------------+
+; clk_i                             ; 153.87 MHz                                  ;
++-----------------------------------+---------------------------------------------+
+
+In this project there are:
+
+  - Python utilits for setting module (writing new strings in memory)
+    and for simulating Bloom algorithm.
+
+  - SystemVerilo module.
+
+  - Files for simulations.
+
+Project parts ( folder ):
+
+  - py_utils - Python utilits for setting module (writing new strings in memory)
+    and for simulating Bloom algorithm. READMEen there for more
+    information.
+
+  - rtl - SystemVerilog modules.  READMEen there for more
+    information.
+
+  - testbench - Files for simulations. READMEen there for more
+    information.
+
+
+Filter parameters:
+
+    MIN_S       - minimal length of the string, which can be found.
+
+    MAX_S       - maximal length of the string, which can be found.
+
+    HASH_CNT    - number of hash-funtions used.
+
+    HASH_WIDTH  - width of one hash-function.
+
+  ATTANTION:
+
+    MIN_S and MAX_S - parameters witch you can change freely.
+
+    HASH_CNT and HASH_WIDTH - you can change this parameters only
+      after changing a lot in code.
+
+Aim of work:
+
+  It is an educational project. 

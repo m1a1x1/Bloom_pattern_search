@@ -1,0 +1,301 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>pycrc</title><meta name="generator" content="DocBook XSL Stylesheets V1.76.1"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="refentry" title="pycrc"><a name="pycrc"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>pycrc &#8212; a free, easy to use Cyclic Redundancy Check (CRC) calculator and C source code generator.</p></div><div class="refsynopsisdiv" title="Synopsis"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="command">python pycrc.py</code>  [OPTIONS]</p></div></div><div class="refsect1" title="Description"><a name="idp48142272"></a><h2>Description</h2><p>
+            <a class="ulink" href="http://www.tty1.net/pycrc/" target="_top">pycrc</a>
+            is a CRC reference implementation in Python and a C source code generator for parametrised CRC models.
+            The generated C source code can be optimised for simplicity,
+            speed or small memory footprint, as required on small embedded systems.
+
+            The following operations are implemented:
+            </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>calculate the checksum of a string (ASCII or hex)</p></li><li class="listitem"><p>calculate the checksum of a file</p></li><li class="listitem"><p>generate the header and source files for a C implementation.</p></li></ul></div><p>
+        </p><p>
+            pycrc supports the following variants of the CRC algorithm:
+            </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p><em class="replaceable"><code>bit-by-bit</code></em> or <em class="replaceable"><code>bbb</code></em>:
+                        the basic algorithm which operates individually on every bit of the augmented message
+                        (i.e. the input data with <em class="replaceable"><code>Width</code></em> zero bits added at the end).
+                        This algorithm is a straightforward implementation of the basic polynomial division and
+                        is the easiest one to understand, but it is also the slowest one among all possible
+                        variants.
+                    </p></li><li class="listitem"><p><em class="replaceable"><code>bit-by-bit-fast</code></em> or <em class="replaceable"><code>bbf</code></em>:
+                        a variation of the simple <em class="replaceable"><code>bit-by-bit</code></em> algorithm.
+                        This algorithm still iterates over every bit of the message, but does not augment
+                        it (does not add <em class="replaceable"><code>Width</code></em> zero bits at the end).
+                        It gives the same result as the <em class="replaceable"><code>bit-by-bit</code></em> method by
+                        carefully choosing the initial value of the algorithm.
+                        This method might be a good choice for embedded platforms, where code space is more
+                        important than execution speed.
+                    </p></li><li class="listitem"><p><em class="replaceable"><code>bitwise-expression</code></em> or <em class="replaceable"><code>bwe</code></em>:
+                        calculates the CRC byte-wise using bit-wise expressions (such as binary and, not, xor,
+                        bit-shifts etc).
+                        This algorithm uses the same approach as the <em class="replaceable"><code>table-driven</code></em>
+                        variant, but uses a logical operations instead of a look-up table. It is slightly
+                        slower than the <em class="replaceable"><code>table-driven</code></em> algorithm, but without the
+                        overhead of a look-up table.
+                    </p><p>
+                        This is an experimental feature and will in most cases result in a slower and bigger
+                        binary than any other algorithm.
+                        This option is only valid for code generation, not for checking strings or files.
+                        It can take a long time to generate the output for models with a big Width parameter.
+                        Use with care.
+                    </p></li><li class="listitem"><p><em class="replaceable"><code>table-driven</code></em> or <em class="replaceable"><code>tbl</code></em>:
+                        the standard table driven algorithm.
+                        This is the fastest variant because it operates on one byte at a time, as opposed to one
+                        bit at the time.
+                        This method uses a look-up table (usually of 256 elements), which might not be acceptable
+                        for small embedded systems. The number of elements in the look-up table can be reduced
+                        with the <code class="option">--table-idx-width</code> command line switch.
+                        The value of 4 bits for the table index (16 elements in the look-up table) can be a good
+                        compromise between execution speed and code size.
+                    </p></li></ul></div><p>
+        </p></div><div class="refsect1" title="Options"><a name="idp48161584"></a><h2>Options</h2><div class="variablelist"><dl><dt><span class="term">
+                <code class="option">--version</code>
+            </span></dt><dd><p>show the program version number and exit.</p></dd><dt><span class="term">
+                <code class="option">-h</code>
+            , </span><span class="term">
+                <code class="option">--help</code>
+            </span></dt><dd><p>show this help message and exit.</p></dd><dt><span class="term">
+                <code class="option">--verbose</code>
+            </span></dt><dd><p>be more verbose; in particular, print the value of the parameters and the chosen model to <code class="filename">stdout</code>.</p></dd><dt><span class="term">
+                <code class="option">--check-string=</code><em class="replaceable"><code>STRING</code></em>
+            </span></dt><dd><p>calculate the checksum of a string (default: <span class="quote">&#8220;<span class="quote"><em class="replaceable"><code>123456789</code></em></span>&#8221;</span>).</p></dd><dt><span class="term">
+                <code class="option">--check-hexstring=</code><em class="replaceable"><code>STRING</code></em>
+            </span></dt><dd><p>calculate the checksum of a hexadecimal number string.</p></dd><dt><span class="term">
+                <code class="option">--check-file=</code><em class="replaceable"><code>FILE</code></em>
+            </span></dt><dd><p>calculate the checksum of a file.</p></dd><dt><span class="term">
+                <code class="option">--generate=</code><em class="replaceable"><code>CODE</code></em>
+            </span></dt><dd><p>generate C source code; choose the type from {<em class="replaceable"><code>h</code></em>,
+                <em class="replaceable"><code>c</code></em>, <em class="replaceable"><code>c-main</code></em>, <em class="replaceable"><code>table</code></em>}.</p></dd><dt><span class="term">
+                <code class="option">--std=</code><em class="replaceable"><code>STD</code></em>
+            </span></dt><dd><p>specify the C dialect of the generated code from {C89, ANSI, C99}.</p></dd><dt><span class="term">
+                <code class="option">--algorithm=</code><em class="replaceable"><code>ALGO</code></em>
+            </span></dt><dd><p>choose an algorithm from {<em class="replaceable"><code>bit-by-bit</code></em>, <em class="replaceable"><code>bbb</code></em>,
+                <em class="replaceable"><code>bit-by-bit-fast</code></em>, <em class="replaceable"><code>bbf</code></em>,
+                <em class="replaceable"><code>bitwise-expression</code></em>, <em class="replaceable"><code>bwe</code></em>,
+                <em class="replaceable"><code>table-driven</code></em>, <em class="replaceable"><code>tbl</code></em>,
+                <em class="replaceable"><code>all</code></em>}.</p></dd><dt><span class="term">
+                <code class="option">--model=</code><em class="replaceable"><code>MODEL</code></em>
+            </span></dt><dd><p>choose a parameter set from
+                   {<em class="replaceable"><code>crc-5</code></em>,
+                    <em class="replaceable"><code>crc-8</code></em>,
+                    <em class="replaceable"><code>dallas-1-wire</code></em>,
+                    <em class="replaceable"><code>crc-12-3gpp</code></em>,
+                    <em class="replaceable"><code>crc-15</code></em>,
+                    <em class="replaceable"><code>crc-16</code></em>,
+                    <em class="replaceable"><code>crc-16-usb</code></em>,
+                    <em class="replaceable"><code>crc-16-modbus</code></em>,
+                    <em class="replaceable"><code>crc-16-genibus</code></em>,
+                    <em class="replaceable"><code>ccitt</code></em>,
+                    <em class="replaceable"><code>r-crc-16</code></em>,
+                    <em class="replaceable"><code>kermit</code></em>,
+                    <em class="replaceable"><code>x-25</code></em>,
+                    <em class="replaceable"><code>xmodem</code></em>,
+                    <em class="replaceable"><code>zmodem</code></em>,
+                    <em class="replaceable"><code>crc-24</code></em>,
+                    <em class="replaceable"><code>crc-32</code></em>,
+                    <em class="replaceable"><code>crc-32c</code></em>,
+                    <em class="replaceable"><code>crc-32-mpeg</code></em>,
+                    <em class="replaceable"><code>crc-32-bzip2</code></em>,
+                    <em class="replaceable"><code>posix</code></em>,
+                    <em class="replaceable"><code>jam</code></em>,
+                    <em class="replaceable"><code>xfer</code></em>,
+                    <em class="replaceable"><code>crc-64</code></em>,
+                    <em class="replaceable"><code>crc-64-jones</code></em>,
+                    <em class="replaceable"><code>crc-64-xz</code></em>}.</p></dd><dt><span class="term">
+                <code class="option">--width=</code><em class="replaceable"><code>NUM</code></em>
+            </span></dt><dd><p>use <em class="replaceable"><code>NUM</code></em> bits in the <em class="replaceable"><code>Polynomial</code></em>.</p></dd><dt><span class="term">
+                <code class="option">--poly=</code><em class="replaceable"><code>HEX</code></em>
+            </span></dt><dd><p>use <em class="replaceable"><code>HEX</code></em> as <em class="replaceable"><code>Polynomial</code></em>.</p></dd><dt><span class="term">
+                <code class="option">--reflect-in=</code><em class="replaceable"><code>BOOL</code></em>
+            </span></dt><dd><p>reflect the octets in the input message.</p></dd><dt><span class="term">
+                <code class="option">--xor-in=</code><em class="replaceable"><code>HEX</code></em>
+            </span></dt><dd><p>use <em class="replaceable"><code>HEX</code></em> as initial value.</p></dd><dt><span class="term">
+                <code class="option">--reflect-out=</code><em class="replaceable"><code>BOOL</code></em>
+            </span></dt><dd><p>reflect the resulting checksum before applying the XorOut value.</p></dd><dt><span class="term">
+                <code class="option">--xor-out=</code><em class="replaceable"><code>HEX</code></em>
+            </span></dt><dd><p>xor the final CRC value with <em class="replaceable"><code>HEX</code></em>.</p></dd><dt><span class="term">
+                <code class="option">--table-idx-width=</code><em class="replaceable"><code>NUM</code></em>
+            </span></dt><dd><p>use <em class="replaceable"><code>NUM</code></em> bits to index the CRC table;
+                    <em class="replaceable"><code>NUM</code></em> must be one of the values
+                    {<em class="replaceable"><code>1</code></em>, <em class="replaceable"><code>2</code></em>,
+                    <em class="replaceable"><code>4</code></em>, <em class="replaceable"><code>8</code></em>}.</p></dd><dt><span class="term">
+                <code class="option">--symbol-prefix=</code><em class="replaceable"><code>STRING</code></em>
+            </span></dt><dd><p>when generating source code, use <em class="replaceable"><code>STRING</code></em>
+                    as prefix to the exported C symbols.</p></dd><dt><span class="term">
+                <code class="option">--crc-type=</code><em class="replaceable"><code>STRING</code></em>
+            </span></dt><dd><p>when generating source code, use <em class="replaceable"><code>STRING</code></em> as crc_t type.</p></dd><dt><span class="term">
+                <code class="option">--include-file=</code><em class="replaceable"><code>FILE</code></em>
+            </span></dt><dd><p>when generating source code, include also <em class="replaceable"><code>FILE</code></em> as header file.
+                    This option can be specified multiple times.</p></dd><dt><span class="term">
+                <code class="option">-o</code><em class="replaceable"><code>FILE</code></em>
+            , </span><span class="term">
+                <code class="option">--output=</code><em class="replaceable"><code>FILE</code></em>
+            </span></dt><dd><p>write the generated code to <em class="replaceable"><code>FILE</code></em> instead of <code class="filename">stdout</code>.</p></dd></dl></div></div><div class="refsect1" title="The CRC Parametric Model"><a name="idp48257536"></a><h2>The CRC Parametric Model</h2><p>
+            The parametric model follows Ross N. Williams' convention described in
+            <a class="ulink" href="http://www.ross.net/crc/crcpaper.html" target="_top">A Painless Guide to CRC Error Detection Algorithms</a>,
+            often called the Rocksoft Model.
+            Since most people are familiar with this kind of parameters, pycrc follows this convention, described as follows:
+            </p><div class="glosslist"><dl><dt><em class="replaceable"><code>Width</code></em></dt><dd><p>
+                        The number of significant bits in the CRC <em class="replaceable"><code>Polynomial</code></em>,
+                        excluding the most significant 1.
+                        This will also be the number of bits in the final CRC result.
+                        In previous versions of pycrc only multiples of 8 could be used as
+                        <em class="replaceable"><code>Width</code></em> for the <em class="replaceable"><code>table-driven</code></em> algorithm.
+                        As of version 0.7.5 any value is accepted for <em class="replaceable"><code>Width</code></em> for all algorithms.
+                        </p></dd><dt><em class="replaceable"><code>Polynomial</code></em></dt><dd><p>
+                        The unreflected polynomial of the CRC algorithm.
+                        </p><p>
+                        The <em class="replaceable"><code>Polynomial</code></em> may be specified in its standard form,
+                        i.e. with bit <em class="replaceable"><code>Width</code></em>+1 set to 1, but the most significant
+                        bit may also be omitted.
+                        For example, both numbers 0x18005 and 0x8005 are accepted for a 16-bit
+                        <em class="replaceable"><code>Polynomial</code></em>.
+                        </p></dd><dt><em class="replaceable"><code>ReflectIn</code></em></dt><dd><p>
+                        Reflect the octets of the message before processing them.
+                        </p><p>
+                        A word is reflected or reversed by <span class="quote">&#8220;<span class="quote">flipping</span>&#8221;</span> its bits around the
+                        mid-point of the word.
+                        The most significant bit of the word is moved to the least significant position,
+                        the second-most significant bit is moved to the second-least significant position
+                        and so on.
+                        The reflected value of 0xa3 (10100010b) is 0x45 (01000101b), for example.
+                        </p><p>
+                        Some CRC algorithms can be implemented more efficiently in a bit reversed version,
+                        that's why many of the standard CRC models use reflected input octets.
+                        </p></dd><dt><em class="replaceable"><code>XorIn</code></em></dt><dd><p>
+                        The initial value (usually all 0 or all 1) for algorithms which operate on the
+                        non-augmented message, that is, any algorithm other than the
+                        <em class="replaceable"><code>bit-by-bit</code></em> one.
+                        This value can be interpreted as a value which will be XOR-ed into the CRC register
+                        after <em class="replaceable"><code>Width</code></em> iterations of the
+                        <em class="replaceable"><code>bit-by-bit</code></em> algorithm.
+                        This implies that the simple <em class="replaceable"><code>bit-by-bit</code></em> algorithm must
+                        calculate the initial value using some sort of reverse CRC algorithm on the
+                        <em class="replaceable"><code>XorIn</code></em> value.
+                        </p></dd><dt><em class="replaceable"><code>ReflectOut</code></em></dt><dd><p>
+                        Reflect the final CRC result. This operation takes place before XOR-ing the final CRC
+                        value with the <em class="replaceable"><code>XorOut</code></em> parameter.
+                        </p></dd><dt><em class="replaceable"><code>XorOut</code></em></dt><dd><p>
+                        A value (usually all bits 0 or all 1) which will be XOR-ed to the final CRC value.
+                        </p></dd><dt><em class="replaceable"><code>Check</code></em></dt><dd><p>
+                        This value is not exactly a parameter of a model but it is sometimes given together
+                        with the Rocksoft Model parameters.
+                        It is the CRC value of the parametrised model over the string
+                        <span class="quote">&#8220;<span class="quote"><em class="replaceable"><code>123456789</code></em></span>&#8221;</span> and
+                        can be used as a sanity check for a particular CRC implementation.
+                        </p></dd></dl></div><p>
+        </p></div><div class="refsect1" title="Code generation"><a name="idp48283568"></a><h2>Code generation</h2><p>
+        In the default configuration, the generated code is strict ISO C99.
+        A minimal set of three functions are defined for each algorithm:
+        <code class="function">crc_init()</code>, <code class="function">crc_update()</code> and <code class="function">crc_finalize()</code>.
+        Depending on the number of parameters given to pycrc, a different interface will be defined.
+        A fully parametrised model has a simpler API, while the generated code for a runtime-specified
+        implementation requires a pointer to a configuration structure as first parameter to all functions.
+        </p><p>
+        The generated source code uses the type <span class="type">crc_t</span>, which is used throughout the code
+        to hold intermediate results and also the final CRC value.
+        It is defined in the generated header file and its type may be overridden with the
+        <code class="option">--crc-type</code> option.
+        </p><div class="refsect2" title="Fully parametrised models"><a name="idp48287760"></a><h3>Fully parametrised models</h3><p>
+            The prototypes of the CRC functions are normally generated by pycrc using the
+            <em class="replaceable"><code>--generate h</code></em> option.
+            The CRC functions for a fully parametrised model will look like:
+            </p><div class="funcsynopsis"><pre class="funcsynopsisinfo">
+#include &lt;stdlib.h&gt;
+typedef uint16_t crc_t;         /* pycrc will use an appropriate size here */
+                </pre><table border="0" summary="Function synopsis" cellspacing="0" cellpadding="0" class="funcprototype-table"><tr><td><code class="funcdef">crc_t <b class="fsfunc">crc_init</b>(</code></td><td><code>void)</code>;</td><td> </td></tr></table><div class="funcprototype-spacer"> </div><table border="0" summary="Function synopsis" cellspacing="0" cellpadding="0" class="funcprototype-table"><tr><td><code class="funcdef">crc_t <b class="fsfunc">crc_update</b>(</code></td><td>crc_t <var class="pdparam">crc</var>, </td></tr><tr><td> </td><td>const unsigned char *<var class="pdparam">data</var>, </td></tr><tr><td> </td><td>size_t <var class="pdparam">data_len</var><code>)</code>;</td></tr></table><div class="funcprototype-spacer"> </div><table border="0" summary="Function synopsis" cellspacing="0" cellpadding="0" class="funcprototype-table"><tr><td><code class="funcdef">crc_t <b class="fsfunc">crc_finalize</b>(</code></td><td>crc_t <var class="pdparam">crc</var><code>)</code>;</td></tr></table><div class="funcprototype-spacer"> </div></div><p>
+            The code snippet below shows how to use the generated functions.
+            </p><pre class="programlisting">
+#include "pycrc_generated_crc.h"
+#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    static const unsigned char str1[] = "1234";
+    static const unsigned char str2[] = "56789";
+    crc_t crc;
+
+    crc = crc_init();
+    crc = crc_update(crc, str1, sizeof(str1) - 1);
+    crc = crc_update(crc, str2, sizeof(str2) - 1);
+    /* more calls to crc_update... */
+    crc = crc_finalize(crc);
+
+    printf("0x%lx\n", (long)crc);
+    return 0;
+}
+            </pre><p>
+            </p></div><div class="refsect2" title="Models with runtime-configurable parameters"><a name="idp48299248"></a><h3>Models with runtime-configurable parameters</h3><p>
+            When the model is not fully defined then the missing parameters are stored in a structure of
+            type <span class="type">crc_cfg_t</span>.
+            If a CRC function requires a value from the <span class="type">crc_cfg_t</span> structure, then the first
+            function argument is always a pointer to that structure.
+            All fields of the configuration structure must be properly initialised before the first call
+            to any CRC function.
+            </p><p>
+            If the <em class="replaceable"><code>Width</code></em> was not specified when the code was generated, then
+            the <span class="type">crc_cfg_t</span> structure will contain three more fields:
+            <em class="parameter"><code>msb_mask</code></em>, <em class="parameter"><code>crc_mask</code></em> and <em class="parameter"><code>crc_shift</code></em>.
+            They are defined for performance reasons and must be initialised to the value given next to the
+            field definition.
+            </p><p>
+            For example, a completely undefined CRC implementation will generate a <span class="type">crc_cfg_t</span>
+            structure as below:
+            </p><pre class="programlisting">
+typedef struct {
+    unsigned int width;
+    crc_t poly;
+    bool reflect_in;
+    crc_t xor_in;
+    bool reflect_out;
+    crc_t xor_out;
+
+    // internal parameters
+    crc_t msb_mask;             // initialise as 1UL &lt;&lt; (cfg-&gt;width - 1)
+    crc_t crc_mask;             // initialise as (cfg-&gt;msb_mask - 1) | cfg-&gt;msb_mask
+    unsigned int crc_shift;     // initialise as cfg-&gt;width &lt; 8 ? 8 - cfg-&gt;width : 0
+} crc_cfg_t;
+            </pre><p>
+            </p><p>
+            <em class="parameter"><code>msb_mask</code></em> is a bitmask with the most significant bit of a
+            <em class="replaceable"><code>Width</code></em> bits wide data type set to 1.
+
+            <em class="parameter"><code>crc_mask</code></em> is a bitmask with all bits of a
+            <em class="replaceable"><code>Width</code></em> bits wide data type set to 1.
+
+            <em class="parameter"><code>crc_shift</code></em> is a shift counter that is used when
+            <em class="replaceable"><code>Width</code></em> is less than 8.
+            It is the number of bits to shift the CRC register to align its top bit to a byte boundary.
+            </p><p>
+            The file <code class="filename">test/main.c</code> in the source package of pycrc
+            contains a fully featured example of how to use the generated source code.
+            A shorter, more compact <code class="code">main()</code> function can be generated with the
+            <em class="replaceable"><code>--generate c-main</code></em> option.
+            This second variant is the better option as it will always output valid code when
+            some of the CRC parameters are known and some are unknown during code generation.
+            </p></div></div><div class="refsect1" title="Examples"><a name="idp48311584"></a><h2>Examples</h2><p>
+            </p><div class="glosslist"><dl><dt>Calculate the CRC-32 checksum of the string <span class="quote">&#8220;<span class="quote">123456789</span>&#8221;</span>:</dt><dd><p>
+                        <strong class="userinput"><code>python pycrc.py --model crc-32 --check-string 123456789</code></strong>
+                        </p></dd><dt>Generate the source code of the table-driven algorithm for an embedded application.</dt><dd><p>
+                        The table index width of 4 bits ensures a moderate memory usage.
+                        To be precise, the size of the resulting table will be <code class="code">16 * sizeof(crc_t)</code>.
+                        </p><p>
+                        <strong class="userinput"><code>python pycrc.py --model crc-16 --algorithm table-driven --table-idx-width 4 --generate h -o crc.h</code></strong>
+                        </p><p>
+                        <strong class="userinput"><code>python pycrc.py --model crc-16 --algorithm table-driven --table-idx-width 4 --generate c -o crc.c</code></strong>
+                        </p><p>
+                        A variant of the <em class="replaceable"><code>c</code></em> target is <em class="replaceable"><code>c-main</code></em>:
+                        this target will generate a simple <em class="replaceable"><code>main()</code></em> function in addition to
+                        the CRC functions:
+                        </p><p>
+                        <strong class="userinput"><code>python pycrc.py --model crc-16 --algorithm table-driven --table-idx-width 4 --generate c-main -o crc.c</code></strong>
+                        </p></dd><dt>Generate the CRC table only:</dt><dd><p>
+                        <strong class="userinput"><code>python pycrc.py --model kermit --generate table -o crc-table.txt</code></strong>
+                        </p></dd></dl></div><p>
+        </p></div><div class="refsect1" title="See Also"><a name="idp48324352"></a><h2>See Also</h2><p>
+            The homepage of pycrc is <a class="ulink" href="http://www.tty1.net/pycrc/" target="_top">http://www.tty1.net/pycrc/</a>.
+        </p><p>
+            A list of common CRC models is at <a class="ulink" href="http://www.tty1.net/pycrc/crc-models_en.html" target="_top">http://www.tty1.net/pycrc/crc-models_en.html</a>.
+            For a long list of known CRC models, see Greg Cook's
+            <a class="ulink" href="http://reveng.sourceforge.net/crc-catalogue/" target="_top">Catalogue of Parameterised CRC Algorithms</a>.
+        </p></div><div class="refsect1" title="Copyright"><a name="idp48328528"></a><h2>Copyright</h2><p>
+            This work is licensed under a
+            <a class="ulink" href="http://creativecommons.org/licenses/by-sa/3.0/" target="_top">Creative Commons Attribution-Share Alike 3.0 Unported License</a>.
+        </p></div></div></body></html>
