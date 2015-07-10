@@ -11,7 +11,7 @@ All work has been made on Linux with the help of next programs:
 
   - Quartus II 64-bit 14.0.0
 
-Here is a fitter summary for Arria II GX EP2AGX125DF25C6:
+Here is a fitter summary for Altera Arria II GX EP2AGX125DF25C6:
 
 +---------------------------------------------------------------------------------+
 ; Fitter Summary                                                                  ;
@@ -51,20 +51,20 @@ In this project there are:
   - Python utilits for setting module (writing new strings in memory)
     and for simulating Bloom algorithm.
 
-  - SystemVerilo module.
+  - SystemVerilog module.
 
   - Files for simulations.
 
 Project parts ( folder ):
 
   - py_utils - Python utilits for setting module (writing new strings in memory)
-    and for simulating Bloom algorithm. READMEen there for more
+    and for simulating Bloom algorithm. README.en there for more
     information.
 
-  - rtl - SystemVerilog modules.  READMEen there for more
+  - rtl - SystemVerilog modules.  README.en there for more
     information.
 
-  - testbench - Files for simulations. READMEen there for more
+  - testbench - Files for simulations. README.en there for more
     information.
 
 
@@ -78,7 +78,7 @@ Filter parameters:
 
     HASH_WIDTH  - width of one hash-function.
 
-  ATTANTION:
+  ATTENTION:
 
     MIN_S and MAX_S - parameters witch you can change freely.
 
