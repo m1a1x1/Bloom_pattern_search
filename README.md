@@ -1,7 +1,7 @@
 # BLOOM FILTER PATTERN SEARCH
 FPGA Implementation of pattern search based on Bloom algorithm.
 
-![bloom](m1a1x1.github.com/Bloom_pattern_search/bloom.jpg)
+![bloom](https://github.com/m1a1x1/Bloom_pattern_search/blob/master/bloom.jpg)
 
 ## About
 Verilog model of Bloom filter pattern search with opportunity to test
