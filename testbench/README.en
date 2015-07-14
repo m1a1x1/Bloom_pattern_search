@@ -1,0 +1,24 @@
+This is a folder for simulation in ModelSim.
+
+Parameters can be changed in defines.vh.
+
+For simulation you will have to do next steps:
+
+  1) Prepare file with data and settings file 
+     (use /py_utils/util_for_sim.py). 
+
+  2) Make sure there are right names of files and parameters 
+     in defines.vh.
+
+  3) Run:
+       
+       vsim -do make.do
+
+  4) In wave window you can see all signals in all modules. 
+     In transcript window you can see result of searching.
+
+  5) After all data passed thrue filter 
+     DON'T FORGET TO STOP SIMULATION.
+
+  6) Now you can see output file and check in witch lines of 
+     input data file strings were found.
