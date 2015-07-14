@@ -1,10 +1,6 @@
 #!/usr/bin/python
 # -*- coding: koi8-r -*-
-import sys
-import ConfigParser
 import argparse
-from collections import OrderedDict
-from parse_params import * 
 from random import *
 from py_crc32.hash_cnt_crc32 import chash
 import sys
@@ -13,27 +9,6 @@ HASH_CNT       = 10
 MAX_HASH_VALUE = 4095
 
 ch = chash( [ '04C11DB7'  , 'EDB88321', '82608EDB', '1EDC6F41' ] )
-
-default_params_d = {
-
-  'str_fname'    : False,
-  'data_fname'   : False,
-  'output_fname' : "filtered_data"
-
-}
-
-cmd_params_d = dict( )
-usage = 'Reference model for Bloom pattern match'
-
-cmd_params_d[ 'str_fname' ]  = ( '-s', '--str_fname' , 'str_fname', \
-                                '<FILE>', 'store', \
-                                'File with patterns to search.' )
-cmd_params_d[ 'data_fname' ] = ( '-d', '--data_fname', 'data_fname', \
-                                '<FILE>', 'store', \
-                                'File with lines for search.' )
-cmd_params_d[ 'output_fname' ]  = ( '-o', '--output_fname', 'output_fname', \
-                                '<FILE>', 'store', \
-                                'Output file name.' )
 
 class bf( ):
   def __init__( self, _byte_width, all_sign, _max_hash_value ):
@@ -94,24 +69,40 @@ def write_out_file( all_data, OUT_FNAME ):
 
 
 if __name__ == "__main__":
-  params_d = parse_all_params( default_params_d, cmd_params_d, sys.argv[1:], usage )
 
-  if( params_d[ 'str_fname' ] ):
-    SIGN_FNAME = params_d[ 'str_fname' ] 
+  parser = argparse.ArgumentParser( description='Reference model of Bloom pattern search.', prefix_chars='-')
+
+  parser.add_argument('-s', metavar='str_fname', type=str,
+                         help='File with patterns to search.')
+
+  parser.add_argument('-d', metavar='data_fname', type=str,
+                         help='File with data for search in.')
+
+  parser.add_argument('-o', metavar='output_fname', type=str,
+                         help='Output file name (Only data without patterns). Default: data_fname + _no_patterns')
+
+  args = parser.parse_args()
+  parsed_args = vars(args)
+
+  if( parsed_args[ 's' ] ):
+    SIGN_FNAME = parsed_args[ 's' ] 
 
   else:
     print( "No file with pattern given!" )
     print( "Use -h for help" )
     sys.exit( 0 ) 
 
-  if( params_d[ 'data_fname' ] ):
-    DATA_FNAME = params_d[ 'data_fname' ]
+  if( parsed_args[ 'd' ] ):
+    DATA_FNAME = parsed_args[ 'd' ]
   else:
     print( "No data file given!" )
     print( "Use -h for help" )
+    sys.exit( 0 ) 
 
-  if( params_d[ 'output_fname' ] ):
-    OUT_FNAME = params_d[ 'output_fname' ]
+  if( parsed_args[ 'o' ] ):
+    OUT_FNAME = parsed_args[ 'o' ]
+  else:
+    OUT_FNAME = DATA_FNAME + "_no_patterns"
 
   signs = [line.strip() for line in open(SIGN_FNAME)] 
   all_data = [line.strip() for line in open(DATA_FNAME)] 
@@ -156,6 +147,8 @@ if __name__ == "__main__":
       if sign in data:
         fair_match_cnt += 1
 
+  print( "Writing data without patterns in file: %s" ) % ( OUT_FNAME )
   write_out_file( data_without_pattern, OUT_FNAME )
+
   print "FAIR RESULT: Strings found in %d lines" % ( fair_match_cnt )
   print "BLOOM RESULT: Strings found in %d lines" % ( bf_match_str )

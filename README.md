@@ -1,6 +1,6 @@
 # BLOOM FILTER PATTERN SEARCH
 
-![bloom](https://github.com/m1a1x1/Bloom_pattern_search/blob/master/bloom.jpg)
+![bloom](https://github.com/m1a1x1/Bloom_pattern_search/blob/master/doc/bloom.jpg)
 
 ### _FPGA Implementation of pattern search based on Bloom algorithm._
 

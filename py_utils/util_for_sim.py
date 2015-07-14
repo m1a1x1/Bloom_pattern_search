@@ -1,15 +1,13 @@
 #! /usr/bin/python
 # -*- coding: koi8-r -*-
 
-import sys
-import ConfigParser
 import argparse
+
+import sys
 
 from math import *
 
-from collections import OrderedDict
-
-from parse_params import *
+#from parse_params import *
 
 from py_crc32.hash_cnt_crc32 import chash
 
@@ -33,36 +31,8 @@ HASH_MAX        = 4096 # - this parameter better not change
 # This numbers are polinoms for CRC32 using to calc hash from string.
 # If you change them, you also should change functions for calculating
 # CRC32 in verilog ( /rtl/hash/crc32_POL_<N>.sv )
+
 ch = chash( [ '04C11DB7'  , 'EDB88321', '82608EDB', '1EDC6F41' ] )
-
-default_params_d = {
-
-  'init'       : False,
-  'add_str'    : False,
-  'add_str_f'  : False,
-  'rm_str'     : False,
-  'show_state' : False
-
-}
-
-cmd_params_d = dict( )
-usage = 'Utility for setting Bloom pattern match'
-
-cmd_params_d[ 'init' ]       = ( '-i', '--init','init', \
-                                '', 'store_true', \
-                                'Prepare module.' )
-cmd_params_d[ 'add_str' ]    = ( '-a', '--add_str' , 'add_str', \
-                                '< STRING >', 'store', \
-                                'Add new string for search.' )
-cmd_params_d[ 'add_str_f' ]  = ( '-A', '--add_str_f', 'add_str_f', \
-                                'FILE', 'store', \
-                                'Add strings for search from file.' )
-cmd_params_d[ 'rm_str' ]     = ( '-r', '--rm_str', 'rm_str', \
-                                '< STRING >', 'store', \
-                                'Remove string.' )
-cmd_params_d[ 'show_state' ]   = ( '-S', '--show_state', 'show_state', \
-                                '', 'store_true', \
-                                'Show current configuration.' )
 
 
 ######################################################
@@ -274,7 +244,26 @@ def print_welcom( ):
 
 if __name__ == "__main__":
 
-  params_d = parse_all_params( default_params_d, cmd_params_d, sys.argv[1:], usage )
+
+  parser = argparse.ArgumentParser( description='Util for setting Bloom pattern search.', prefix_chars='-')
+
+  parser.add_argument('-i','--init', action='store_true',
+                         help='Prepare module.')
+
+  parser.add_argument('-a','--add_str', type=str,
+                         help='Add new string for search.')
+
+  parser.add_argument('-A','--add_str_f', type=str,
+                         help='Add strings for search from file.')
+
+  parser.add_argument('-r','--rm_str', type=str,
+                         help='Remove string.')
+
+  parser.add_argument('-S','--show_state', action='store_true',
+                         help='Show current configuration.')
+
+  args = parser.parse_args()
+  params_d = vars(args)
 
   if( params_d[ 'init' ] ):
     init( )
