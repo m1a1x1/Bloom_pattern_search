@@ -11,7 +11,7 @@ Description of programs:
   
    The keys:
 
-     ATTANTION: All keys mast be set!
+     ATTENTION: All keys must be set!
 
      -s <FILE_NAME> - File with strings for search (e.c. example_strings).
 
@@ -43,7 +43,7 @@ Description of programs:
 
    The keys:
 
-     ATTANTION:  1) You can set only one key at a time.
+     ATTENTION:  1) You can set only one key at a time.
                  2) You can change .json file name and file for
                  simulation with strings. Open util_for_sim.py and
                  change values of SIM_FNAME and PM_STATE_FNAME.
