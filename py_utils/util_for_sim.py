@@ -9,7 +9,9 @@ from math import *
 
 #from parse_params import *
 
-from py_crc32.hash_cnt_crc32 import chash
+from hash_cnt_crc32 import chash
+
+from pycrc.pycrc import *
 
 import json
 

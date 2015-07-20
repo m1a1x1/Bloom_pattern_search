@@ -2,7 +2,8 @@
 # -*- coding: koi8-r -*-
 import argparse
 from random import *
-from py_crc32.hash_cnt_crc32 import chash
+from pycrc.pycrc import *
+from hash_cnt_crc32 import chash
 import sys
 
 HASH_CNT       = 10

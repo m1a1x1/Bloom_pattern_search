@@ -10,6 +10,16 @@
   Verilog model of Bloom filter pattern search with opportunity to test
 it on your text files!
 
+## Additonal code
+
+  Python utilits in this project using *pycrc* module for calculating
+  crc. You can find one here:
+
+  https://github.com/tpircher/pycrc
+
+  In py_utils/README you will find instuction, how to add it in
+  project.
+
 #### Input:
 
 1. File with long strings for cheking patterns there.
@@ -33,6 +43,7 @@ and descriptions.
 ## The necessary software
 
 1. ModelSim (See more in ./doc/README ).
+2. Python 2.7.8
 
 ## P.S.
 

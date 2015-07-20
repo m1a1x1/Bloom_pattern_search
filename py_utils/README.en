@@ -5,6 +5,22 @@ There are two python programs:
   - util_for_sim.py - program for making a settings file for
                       simulation.
 
+Befor you start:
+
+You need add program for calculating crc!
+
+  1) Go to /py_util and clone module pycrc:
+
+       git clone https://github.com/tpircher/pycrc 
+
+  2) Go to pycrc and make an empty __init__.py file:
+
+       touch __init__.py
+
+  3) Do no rename /pycrc folder. Now you can work with project.
+
+
+
 Description of programs:
 
  bloom_model.py 
